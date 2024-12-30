@@ -119,6 +119,28 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
+  Future<ApiReturnValue<bool>> update(
+      String uuid, String name, String handphone) async {
+    try {
+      ApiReturnValue<bool> value = await AuthServices().update(
+        uuid,
+        name,
+        handphone,
+      );
+
+      return ApiReturnValue(
+        value: value.value,
+        statusCode: value.statusCode,
+        message: value.message,
+      );
+    } catch (e) {
+      return ApiReturnValue(
+        statusCode: "500",
+        message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi",
+      );
+    }
+  }
+
   Future<ApiReturnValue<bool>> signOut() async {
     try {
       ApiReturnValue<bool> value = await AuthServices().signOut();

@@ -2,34 +2,41 @@ import 'package:app_mademin/components/atoms/gen_divider.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/components/molecules/genread.dart';
 import 'package:app_mademin/config/config.dart';
-import 'package:app_mademin/screen/profile/comp_listtile.dart';
+import 'package:app_mademin/screen/auth/profile/comp_listtile.dart';
 import 'package:app_mademin/components/atoms/gen_alert.dart';
 import 'package:app_mademin/components/atoms/gen_avatar.dart';
 import 'package:app_mademin/components/atoms/gen_button.dart';
 import 'package:app_mademin/components/atoms/gen_function.dart';
 import 'package:app_mademin/models/auth_model.dart';
 import 'package:app_mademin/providers/auth_provider.dart';
+import 'package:app_mademin/screen/auth/profile/profile_edit_page.dart';
+import 'package:app_mademin/screen/auth/sign_in/home_root.dart';
 import 'package:app_mademin/screen/auth/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({
+class ProfileHomePage extends StatefulWidget {
+  final Authmo authmo;
+
+  const ProfileHomePage({
     super.key,
+    required this.authmo,
   });
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<ProfileHomePage> createState() => _ProfileHomePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfileHomePageState extends State<ProfileHomePage> {
   // import class function
   GeneralFunction function = GeneralFunction();
 
   // function
   Future<bool> _back() async {
-    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (BuildContext context) => HomeRoot(email: widget.authmo.email!),
+    ));
     return true;
   }
 
@@ -121,17 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    //
-    AuthProvider authProvider =
-        Provider.of<AuthProvider>(context, listen: false);
-    var authmo = authProvider.value;
-
     return GeneralReadPages(
       title: "Akun",
       subtitle: "Pengaturan Akun",
@@ -161,7 +158,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         AvatarUrl(
-                          url: authmo.profilePhotoPath,
+                          url: widget.authmo.profilePhotoPath,
                           sizeWidth: 52,
                           sizeHeight: 52,
                           sizeRadius: 30,
@@ -171,11 +168,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "${authmo.name}",
+                              "${widget.authmo.name}",
                               style: footFont.copyWith(color: blackFlat),
                             ),
                             Text(
-                              "${authmo.email}",
+                              "${widget.authmo.email}",
                               style: footFont.copyWith(color: blackLight),
                             ),
                           ],
@@ -199,14 +196,18 @@ class _ProfilePageState extends State<ProfilePage> {
               title: "Kelola Akun",
               icon: Icons.account_box,
               onTap: () {
-                // function.getLaunchUrl("wa.me", "/$whatsappNumber&text=");
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => ProfileEdit(
+                    authmo: widget.authmo,
+                  ),
+                ));
               },
             ),
             CompListTile(
               title: "Hapus akun",
               icon: Icons.delete_outline,
               onTap: () {
-                _alertDeleteAccount(authmo);
+                _alertDeleteAccount(widget.authmo);
               },
             ),
 

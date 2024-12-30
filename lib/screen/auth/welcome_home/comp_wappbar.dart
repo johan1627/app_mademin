@@ -1,7 +1,7 @@
 import 'package:app_mademin/components/atoms/gen_avatar.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/providers/auth_provider.dart';
-import 'package:app_mademin/screen/profile/profile_page.dart';
+import 'package:app_mademin/screen/auth/profile/profile_root.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +21,7 @@ class _CompWelAppBarState extends State<CompWelAppBar> {
     var authmo = authProvider.value;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -42,7 +42,7 @@ class _CompWelAppBarState extends State<CompWelAppBar> {
             // Go to
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => const ProfilePage(),
+                builder: (BuildContext context) => const ProfileRoot(),
               ));
             },
             child: AvatarUrl(

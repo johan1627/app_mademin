@@ -2,48 +2,46 @@ import 'package:app_mademin/components/atoms/gen_function.dart';
 import 'package:app_mademin/components/atoms/gen_textfield.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/components/molecules/gencreate.dart';
+import 'package:app_mademin/models/auth_model.dart';
 import 'package:app_mademin/providers/auth_provider.dart';
-import 'package:app_mademin/screen/auth/sign_in/sign_in.dart';
+import 'package:app_mademin/screen/auth/profile/profile_root.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-class SignUpHome extends StatefulWidget {
-  const SignUpHome({super.key});
+class ProfileEdit extends StatefulWidget {
+  final Authmo authmo;
+
+  const ProfileEdit({
+    super.key,
+    required this.authmo,
+  });
 
   @override
-  State<SignUpHome> createState() => _SignUpHomeState();
+  State<ProfileEdit> createState() => _ProfileEditState();
 }
 
-class _SignUpHomeState extends State<SignUpHome> {
+class _ProfileEditState extends State<ProfileEdit> {
   // initial
   bool isLoading = false;
   bool isEnabledSaved = false;
-  bool isVisibleEmailMsgErr = false;
   bool isVisibleHandphoneMsgErr = false;
   final _conName = TextEditingController();
-  final _conEmail = TextEditingController();
   final _conHandphone = TextEditingController();
 
   // import class function
   GeneralFunction function = GeneralFunction();
 
+  void initial() {
+    setState(() {
+      _conName.text = widget.authmo.name!;
+      _conHandphone.text = widget.authmo.peoplemo!.handphone!;
+    });
+  }
+
   bool isValidName() {
     if (_conName.text != "") {
       return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool isValidEmail() {
-    if (_conEmail.text != "") {
-      var valid = function.isValidateEmail(_conEmail.text);
-      if (valid) {
-        return true;
-      } else {
-        return false;
-      }
     } else {
       return false;
     }
@@ -64,14 +62,12 @@ class _SignUpHomeState extends State<SignUpHome> {
 
   void isEnableBtn() {
     bool validName = isValidName();
-    bool validEmail = isValidEmail();
     bool validHandphone = isValidHandphone();
 
-    if (validName && validEmail && validHandphone) {
+    if (validName && validHandphone) {
       // button, error message
       setState(() {
         isEnabledSaved = true;
-        isVisibleEmailMsgErr = false;
         isVisibleHandphoneMsgErr = false;
       });
     } else {
@@ -81,23 +77,6 @@ class _SignUpHomeState extends State<SignUpHome> {
       });
 
       // error message
-      // validEmail
-      if (validEmail == false) {
-        if (_conEmail.text.length > 2) {
-          setState(() {
-            isVisibleEmailMsgErr = true;
-          });
-        } else {
-          setState(() {
-            isVisibleEmailMsgErr = false;
-          });
-        }
-      } else {
-        setState(() {
-          isVisibleEmailMsgErr = false;
-        });
-      }
-
       // valid Handphone
       if (validHandphone == false) {
         if (_conHandphone.text.length > 2) {
@@ -123,20 +102,18 @@ class _SignUpHomeState extends State<SignUpHome> {
     });
 
     var name = _conName.text.toString();
-    var email = _conEmail.text.toString();
     var handphone = _conHandphone.text.toString();
 
     var res = await Provider.of<AuthProvider>(context, listen: false)
-        .signUp(name, email, handphone);
+        .update(widget.authmo.uuid!, name, handphone);
 
     if (res.statusCode == "200") {
       if (context.mounted) {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (BuildContext context) => const SignInPage(),
+          builder: (BuildContext context) => const ProfileRoot(),
         ));
 
-        function.snackBar(
-            context, "Email terkirim, periksa kotak masuk Email Anda", 4);
+        function.snackBar(context, "Berhasil tersimpan", 4);
       }
     } else {
       var message = res.message;
@@ -157,10 +134,16 @@ class _SignUpHomeState extends State<SignUpHome> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    initial();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GeneralCreatePages(
-      title: "Daftar Akun",
-      subtitle: "Lengkapi data dibawah",
+      title: "Kelola Akun",
+      subtitle: "Ubah data akun",
       onBack: _back,
       body: ListView(
         children: [
@@ -174,27 +157,6 @@ class _SignUpHomeState extends State<SignUpHome> {
             onChanged: (value) {
               isEnableBtn();
             },
-          ),
-          TextFieldCustom(
-            lable: "Email",
-            hintText: "senna.aisyah@gmail.com",
-            controller: _conEmail,
-            keyboardType: TextInputType.emailAddress,
-            length: 50,
-            isPassword: false,
-            onChanged: (value) {
-              isEnableBtn();
-            },
-          ),
-          Visibility(
-            visible: isVisibleEmailMsgErr,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                "Format Email belum benar",
-                style: footFont.copyWith(color: redColor),
-              ),
-            ),
           ),
           TextFieldCustom(
             lable: "Nomor HP",
@@ -225,7 +187,7 @@ class _SignUpHomeState extends State<SignUpHome> {
       isEnableBtn: isEnabledSaved,
       isLoading: isLoading,
       btnIcon: Icons.verified_user_outlined,
-      btnLable: "Daftar Sekarang",
+      btnLable: "Simpan",
     );
   }
 }

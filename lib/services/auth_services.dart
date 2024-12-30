@@ -218,6 +218,51 @@ class AuthServices {
     }
   }
 
+  Future<ApiReturnValue<bool>> update(
+    String uuid,
+    String name,
+    String handphone,
+  ) async {
+    var url = "$baseUrl/auth/update/$uuid";
+
+    Uri uri = Uri.parse(url);
+    var headers = {
+      'Content-Type': 'Application/json',
+      "Authorization": "Bearer ${Authmo.apitoken}"
+    };
+
+    var body = jsonEncode({
+      'name': name.toString(),
+      'handphone': handphone.toString(),
+    });
+
+    var response = await http.put(
+      uri,
+      headers: headers,
+      body: body,
+    );
+
+    if (response.statusCode == 200) {
+      // var data = jsonDecode(response.body)['data'];
+      // Authmo model = Authmo.fromJson(data);
+
+      // List<Apidevmoo> model = [];
+      // for (var item in data) {
+      //   model.add(Apidevmoo.fromJson(item));
+      // }
+
+      return ApiReturnValue(value: true, statusCode: "200");
+    } else if (response.statusCode == 206) {
+      var data = jsonDecode(response.body)['data'];
+      //
+      return ApiReturnValue(statusCode: "206", message: data["message"]);
+    } else {
+      return ApiReturnValue(
+          statusCode: "500",
+          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+    }
+  }
+
   Future<ApiReturnValue<bool>> signOut() async {
     var url = "$baseUrl/auth/sign-out";
 

@@ -33,6 +33,16 @@ class GeneralFunction {
     }
   }
 
+  bool isValidateMobileNumber(String handphone) {
+    bool handphoneValid = RegExp(r"^08\d{8,10}$").hasMatch(handphone);
+
+    if (handphoneValid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   String formatRupiah(String amount) {
     if (amount != "") {
       final money = NumberFormat("#,##0", "en_US");

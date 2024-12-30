@@ -39,7 +39,8 @@ class _ForgotPasswordHomeState extends State<ForgotPasswordHome> {
           builder: (BuildContext context) => const SignInPage(),
         ));
 
-        function.snackBar(context, "Email sent, please check your inbox", 4);
+        function.snackBar(
+            context, "Email terkirim, periksa kotak masuk Email Anda", 4);
       }
     } else {
       var message = res.message;
@@ -82,8 +83,8 @@ class _ForgotPasswordHomeState extends State<ForgotPasswordHome> {
   @override
   Widget build(BuildContext context) {
     return GeneralCreatePages(
-      title: "Forgot Password",
-      subtitle: "Please fill a registered email address",
+      title: "Lupa kata sandi",
+      subtitle: "Silahkan isi Email Anda",
       onBack: _back,
       body: ListView(
         children: [
@@ -106,7 +107,7 @@ class _ForgotPasswordHomeState extends State<ForgotPasswordHome> {
       isEnableBtn: isEnabledSaved,
       isLoading: isLoading,
       btnIcon: Icons.forward_to_inbox,
-      btnLable: "SEND",
+      btnLable: "Kirim",
     );
   }
 }

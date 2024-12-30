@@ -92,7 +92,7 @@ class _SignInPageState extends State<SignInPage> {
     } else {
       //
       final snackBar = SnackBar(
-        content: const Text('format Email Address tidak sesuai'),
+        content: const Text('format Email belum benar'),
         backgroundColor: redColor,
         action: SnackBarAction(
           label: 'OK',
@@ -150,7 +150,7 @@ class _SignInPageState extends State<SignInPage> {
                           const SizedBox(height: 60.0),
                           // title
                           Text(
-                            "Sign In",
+                            "Masuk",
                             style: h1.copyWith(fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(height: 20.0),
@@ -158,8 +158,8 @@ class _SignInPageState extends State<SignInPage> {
                           TextFieldCustom(
                             controller: contEmail,
                             keyboardType: TextInputType.emailAddress,
-                            lable: 'Email Address',
-                            length: 50,
+                            lable: 'Email',
+                            length: 100,
                             isPassword: false,
                             onChanged: (value) {
                               isBtnEnabled();
@@ -170,7 +170,7 @@ class _SignInPageState extends State<SignInPage> {
                           TextFieldCustom(
                             controller: contPass,
                             keyboardType: TextInputType.text,
-                            lable: 'Password',
+                            lable: 'Kata sandi',
                             length: 50,
                             isPassword: true,
                             onChanged: (value) {
@@ -183,7 +183,7 @@ class _SignInPageState extends State<SignInPage> {
                             alignment: Alignment.centerRight,
                             child: TextLink(
                               color: blackLight,
-                              title: "Forgot password?",
+                              title: "Lupa kata sandi?",
                               onPressed: () {
                                 // Go to
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -204,7 +204,7 @@ class _SignInPageState extends State<SignInPage> {
                                 isLoading: isLoading,
                                 isEnabled: isEnabledBtn,
                                 type: "primary",
-                                lable: 'Continue',
+                                lable: 'Masuk',
                                 onSaved: () {
                                   isValidateEmail();
                                 },
@@ -217,7 +217,8 @@ class _SignInPageState extends State<SignInPage> {
                             alignment: Alignment.center,
                             child: TextLink(
                               color: blackLight,
-                              title: "don't have account? sign up",
+                              title:
+                                  "belum punya akun? daftar", // don't have account? sign up
                               onPressed: () {
                                 // Go to
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -233,7 +234,7 @@ class _SignInPageState extends State<SignInPage> {
                             alignment: Alignment.center,
                             child: TextLink(
                               color: blackLight,
-                              title: "Need help?",
+                              title: "Perlu bantuan?",
                               onPressed: () {
                                 function.getLaunchUrl(
                                     "wa.me", "/$whatsappNumber&text=");
@@ -260,14 +261,14 @@ class _SignInPageState extends State<SignInPage> {
                   children: [
                     TextLink(
                       color: blackLight,
-                      title: "term of service",
+                      title: "ketentuan",
                       onPressed: () {
                         function.getLaunchUrl("noonapos.com", "/term");
                       },
                     ),
                     TextLink(
                       color: blackLight,
-                      title: "private policy",
+                      title: "kebijakan privasi",
                       onPressed: () {
                         function.getLaunchUrl("noonapos.com", "/policy");
                       },
@@ -276,7 +277,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20.0),
-                  child: Text("version $versionName", style: smallFont),
+                  child: Text("versi apps $versionName", style: smallFont),
                 ),
               ],
             ),

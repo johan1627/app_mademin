@@ -1,6 +1,7 @@
 import 'package:app_mademin/components/atoms/gen_avatar.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/providers/auth_provider.dart';
+import 'package:app_mademin/screen/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,9 +41,9 @@ class _CompWelAppBarState extends State<CompWelAppBar> {
           InkWell(
             // Go to
             onTap: () {
-              // Navigator.of(context).push(MaterialPageRoute(
-              //   builder: (BuildContext context) => const ProfilePage(),
-              // ));
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => const ProfilePage(),
+              ));
             },
             child: AvatarUrl(
               url: authmo.profilePhotoPath,

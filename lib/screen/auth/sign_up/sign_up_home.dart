@@ -62,35 +62,6 @@ class _SignUpHomeState extends State<SignUpHome> {
     }
   }
 
-  void isEnabledBtn() {
-    if (_conEmail.text != "" && _conName.text != "") {
-      // valid email address
-      var valid = function.isValidateEmail(_conEmail.text);
-      if (valid) {
-        setState(() {
-          isEnabledSaved = true;
-          isVisibleEmailMsgErr = false;
-        });
-      } else {
-        setState(() {
-          isEnabledSaved = false;
-        });
-
-        //
-        if (_conEmail.text.length > 2) {
-          setState(() {
-            isVisibleEmailMsgErr = true;
-          });
-        }
-      }
-    } else {
-      setState(() {
-        isEnabledSaved = false;
-        isVisibleEmailMsgErr = false;
-      });
-    }
-  }
-
   void isEnableBtnNew() {
     bool validName = isValidName();
     bool validEmail = isValidEmail();
@@ -230,7 +201,7 @@ class _SignUpHomeState extends State<SignUpHome> {
             hintText: "081234567890",
             controller: _conHandphone,
             keyboardType: TextInputType.phone,
-            length: 13, // valid is length 13
+            length: 12, // valid is length 12
             isPassword: false,
             onChanged: (value) {
               isEnableBtnNew();

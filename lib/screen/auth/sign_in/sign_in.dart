@@ -126,132 +126,142 @@ class _SignInPageState extends State<SignInPage> {
           return function.onWillPop(context);
         },
         child: Scaffold(
+          backgroundColor: accentColor,
           body: Stack(
             children: [
               // backgroundColor
               Container(
-                color: whiteFlat,
+                color: accentColor,
                 height: 80.0,
               ),
               SingleChildScrollView(
-                child: Column(
-                  children: [
-                    // start content fill
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // logo
-                          const Image(
-                            width: 160.0,
-                            image: AssetImage("assets/img/logo-ademin.png"),
-                          ),
-                          const SizedBox(height: 60.0),
-                          // title
-                          Text(
-                            "Masuk",
-                            style: h1.copyWith(fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(height: 20.0),
-                          // Email
-                          TextFieldCustom(
-                            controller: contEmail,
-                            keyboardType: TextInputType.emailAddress,
-                            lable: 'Email',
-                            length: 100,
-                            isPassword: false,
-                            onChanged: (value) {
-                              isBtnEnabled();
-                            },
-                          ),
-                          const SizedBox(height: 10.0),
-                          // Password
-                          TextFieldCustom(
-                            controller: contPass,
-                            keyboardType: TextInputType.text,
-                            lable: 'Kata sandi',
-                            length: 50,
-                            isPassword: true,
-                            onChanged: (value) {
-                              isBtnEnabled();
-                            },
-                          ),
-
-                          // Forgot Password
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: TextLink(
-                              color: blackLight,
-                              title: "Lupa kata sandi?",
-                              onPressed: () {
-                                // Go to
-                                Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const ForgotPasswordHome(),
-                                ));
+                child: Container(
+                  color: accentColor,
+                  child: Column(
+                    children: [
+                      // start content fill
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // logo
+                            const Image(
+                              width: 160.0,
+                              image:
+                                  AssetImage("assets/img/logo-temuwarga.png"),
+                            ),
+                            const SizedBox(height: 60.0),
+                            // title
+                            Text(
+                              "Masuk",
+                              style: h1.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: primaryColor,
+                              ),
+                            ),
+                            const SizedBox(height: 20.0),
+                            // Email
+                            TextFieldCustom(
+                              controller: contEmail,
+                              keyboardType: TextInputType.emailAddress,
+                              lable: 'Email',
+                              length: 100,
+                              isPassword: false,
+                              onChanged: (value) {
+                                isBtnEnabled();
                               },
                             ),
-                          ),
+                            const SizedBox(height: 10.0),
+                            // Password
+                            TextFieldCustom(
+                              controller: contPass,
+                              keyboardType: TextInputType.text,
+                              lable: 'Kata sandi',
+                              length: 50,
+                              isPassword: true,
+                              onChanged: (value) {
+                                isBtnEnabled();
+                              },
+                            ),
 
-                          const SizedBox(height: 0.0),
-                          // button
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10.0),
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: ButtonWide(
-                                isLoading: isLoading,
-                                isEnabled: isEnabledBtn,
-                                type: "primary",
-                                lable: 'Masuk',
-                                onSaved: () {
-                                  isValidateEmail();
+                            // Forgot Password
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: TextLink(
+                                color: primaryColor,
+                                title: "Lupa kata sandi?",
+                                onPressed: () {
+                                  // Go to
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const ForgotPasswordHome(),
+                                  ));
                                 },
                               ),
                             ),
-                          ),
 
-                          // Don't have account
-                          Align(
-                            alignment: Alignment.center,
-                            child: TextLink(
-                              color: blackLight,
-                              title:
-                                  "belum punya akun? daftar", // don't have account? sign up
-                              onPressed: () {
-                                // Go to
-                                Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const SignUpHome(),
-                                ));
-                              },
+                            const SizedBox(height: 0.0),
+                            // button
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 10.0),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: ButtonWide(
+                                  isLoading: isLoading,
+                                  isEnabled: isEnabledBtn,
+                                  type: "primary",
+                                  lable: 'Masuk',
+                                  onSaved: () {
+                                    isValidateEmail();
+                                  },
+                                ),
+                              ),
                             ),
-                          ),
 
-                          // Need Help
-                          Align(
-                            alignment: Alignment.center,
-                            child: TextLink(
-                              color: blackLight,
-                              title: "Perlu bantuan?",
-                              onPressed: () {
-                                function.getLaunchUrl(
-                                    "wa.me", "/$whatsappNumber&text=");
-                              },
+                            // Don't have account
+                            Align(
+                              alignment: Alignment.center,
+                              child: TextLink(
+                                color: primaryColor,
+                                title:
+                                    "belum punya akun? daftar", // don't have account? sign up
+                                onPressed: () {
+                                  // Go to
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const SignUpHome(),
+                                  ));
+                                },
+                              ),
                             ),
-                          ),
-                        ],
+
+                            // Need Help
+                            Align(
+                              alignment: Alignment.center,
+                              child: TextLink(
+                                color: primaryColor,
+                                title: "Perlu bantuan?",
+                                onPressed: () {
+                                  function.getLaunchUrl(
+                                      "wa.me", "/$whatsappNumber&text=");
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    // end content fill
-                  ],
+                      // end content fill
+                    ],
+                  ),
                 ),
               ),
               // bottom
             ],
           ),
-          bottomNavigationBar: SizedBox(
+          bottomNavigationBar: Container(
+            color: accentColor,
             height: 90.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -260,14 +270,14 @@ class _SignInPageState extends State<SignInPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextLink(
-                      color: blackLight,
+                      color: primaryColor,
                       title: "ketentuan",
                       onPressed: () {
                         function.getLaunchUrl("noonapos.com", "/term");
                       },
                     ),
                     TextLink(
-                      color: blackLight,
+                      color: primaryColor,
                       title: "kebijakan privasi",
                       onPressed: () {
                         function.getLaunchUrl("noonapos.com", "/policy");
@@ -277,7 +287,12 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20.0),
-                  child: Text("versi apps $versionName", style: smallFont),
+                  child: Text(
+                    "versi apps $versionName",
+                    style: smallFont.copyWith(
+                      color: primaryColor,
+                    ),
+                  ),
                 ),
               ],
             ),

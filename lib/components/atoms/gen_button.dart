@@ -31,7 +31,7 @@ class ButtonWide extends StatelessWidget {
       colorLine = Colors.transparent;
       colorText = Colors.white;
       if (isEnabled) {
-        colorBG = primaryColor;
+        colorBG = secondaryColor;
       } else {
         colorBG = greyColor;
       }
@@ -45,19 +45,19 @@ class ButtonWide extends StatelessWidget {
       }
     } else if (type == "danger outline") {
       if (isEnabled) {
-        colorBG = whiteFlat;
+        colorBG = accentColor;
         colorLine = redColor;
         colorText = redColor;
       } else {
-        colorBG = whiteFlat;
+        colorBG = accentColor;
         colorLine = greyColor;
         colorText = greyColor;
       }
     } else if (type == "primary outline") {
       if (isEnabled) {
         colorBG = whiteFlat;
-        colorLine = primaryColor;
-        colorText = primaryColor;
+        colorLine = secondaryColor;
+        colorText = secondaryColor;
       } else {
         colorBG = whiteFlat;
         colorLine = greyColor;
@@ -72,7 +72,7 @@ class ButtonWide extends StatelessWidget {
         colorBG = greyColor;
       }
     } else {
-      colorBG = primaryColor;
+      colorBG = secondaryColor;
       colorLine = Colors.transparent;
       colorText = Colors.white;
     }

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-const Color primaryColor = Color(0xFFFFA000); // Amber 700
+const Color primaryColor = Color(0xFF795548); // Brown 500
+const Color secondaryColor = Color(0xFF603D39);
+const Color accentColor = Color(0xFFFBF6F4);
+const Color whiteFlat = Color(0xFFFAFAFA);
+
 const Color greyColor = Color(0xFFBDC3C7);
 const Color greyDarkColor = Color(0xFF607D8B);
 const Color greyLightColor = Color(0xFFEEEEEE);
 const Color blackFlat = Colors.black87;
 const Color blackLight = Colors.black45;
-const Color whiteFlat = Color(0xFFFAFAFA);
 const Color redColor = Color(0xFFEF5350);
 const Color redLightColor = Color(0xFFE57373);
 const Color blueColor = Color(0xFF1565C0);
@@ -16,9 +19,9 @@ const Color yellowDarkColor = Color(0xFFFFF176);
 const Color orangeDeep = Color(0xFFFF7043);
 
 const List<Color> bgColorLight = <Color>[
-  Color(0xFFFFA000), // to Color, Amber 700
-  Color(0xFFFFA000), // Amber 700
-  Color(0xffFFF8E1), // from Color, Amber 50
+  Color(0xFF795548), // to Color, Brown 500
+  Color(0xFF8D6E63), // Brown 400
+  Color(0xFFEFEBE9), // from Color, Brown 50
 ];
 
 const List<Color> bgColor = <Color>[

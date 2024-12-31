@@ -31,7 +31,10 @@ class CompListTile extends StatelessWidget {
                     icon,
                     color: primaryColor,
                   ),
-                  title: Text(title, style: lableFont),
+                  title: Text(title,
+                      style: lableFont.copyWith(
+                        color: primaryColor,
+                      )),
                   trailing: const Icon(Icons.navigate_next),
                 ),
               ),

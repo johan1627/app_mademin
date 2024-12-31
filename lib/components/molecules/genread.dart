@@ -43,7 +43,7 @@ class GeneralReadPages extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 80.0),
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                  color: whiteFlat,
+                  color: accentColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),
@@ -168,7 +168,7 @@ class GenReadWithTwoWidgetPages extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 80.0),
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                  color: whiteFlat,
+                  color: accentColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),
@@ -241,7 +241,7 @@ class GenReadWithTwoWidgetPages extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: whiteFlat,
+                    color: accentColor,
                     boxShadow: customShadowUp,
                   ),
                   height: 60.0,
@@ -310,7 +310,7 @@ class GenReadWithOneWidgetPages extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 80.0),
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                  color: whiteFlat,
+                  color: accentColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),

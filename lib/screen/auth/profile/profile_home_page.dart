@@ -4,7 +4,6 @@ import 'package:app_mademin/components/molecules/genread.dart';
 import 'package:app_mademin/config/config.dart';
 import 'package:app_mademin/screen/auth/profile/comp_listtile.dart';
 import 'package:app_mademin/components/atoms/gen_alert.dart';
-import 'package:app_mademin/components/atoms/gen_avatar.dart';
 import 'package:app_mademin/components/atoms/gen_button.dart';
 import 'package:app_mademin/components/atoms/gen_function.dart';
 import 'package:app_mademin/models/auth_model.dart';
@@ -80,7 +79,7 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
         backgroundColor: redColor,
         action: SnackBarAction(
           label: 'OK',
-          textColor: whiteFlat,
+          textColor: accentColor,
           onPressed: () {},
         ),
       );
@@ -122,7 +121,7 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
       var message = res.message;
       Get.snackbar("Keluar", message,
           backgroundColor: redColor,
-          colorText: whiteFlat,
+          colorText: accentColor,
           margin: const EdgeInsets.only(top: 4.0));
     }
   }
@@ -157,13 +156,13 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        AvatarUrl(
-                          url: widget.authmo.profilePhotoPath,
-                          sizeWidth: 52,
-                          sizeHeight: 52,
-                          sizeRadius: 30,
-                        ),
-                        const SizedBox(width: 10.0),
+                        // AvatarUrl(
+                        //   url: widget.authmo.profilePhotoPath,
+                        //   sizeWidth: 52,
+                        //   sizeHeight: 52,
+                        //   sizeRadius: 30,
+                        // ),
+                        // const SizedBox(width: 10.0),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -172,7 +171,7 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
                               child: Text(
                                 "${widget.authmo.name}",
                                 overflow: TextOverflow.ellipsis,
-                                style: footFont.copyWith(color: blackFlat),
+                                style: footFont.copyWith(color: primaryColor),
                               ),
                             ),
                             SizedBox(
@@ -197,7 +196,10 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
               padding: const EdgeInsets.only(left: 10.0),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Text("Akun", style: footFont),
+                child: Text("Akun",
+                    style: footFont.copyWith(
+                      color: secondaryColor,
+                    )),
               ),
             ),
             CompListTile(
@@ -224,7 +226,10 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
               padding: const EdgeInsets.only(left: 10.0),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Text("Informasi", style: footFont),
+                child: Text("Informasi",
+                    style: footFont.copyWith(
+                      color: secondaryColor,
+                    )),
               ),
             ),
 
@@ -270,7 +275,8 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
               lable: "Keluar",
               iconData: Icons.output_outlined,
             ),
-            Text("versi $versionName", style: smallFont)
+            Text("versi $versionName",
+                style: smallFont.copyWith(color: primaryColor))
           ],
         ),
       ),

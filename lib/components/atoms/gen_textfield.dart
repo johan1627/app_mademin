@@ -56,7 +56,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
           counterText: "", // hide maxLength
           labelText: widget.lable,
           labelStyle: lableFont.copyWith(
-            color: blackFlat,
+            color: primaryColor,
             fontWeight: FontWeight.w400,
           ),
           contentPadding:

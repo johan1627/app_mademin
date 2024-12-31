@@ -48,7 +48,7 @@ class _WelcomeHomePageState extends State<WelcomeHomePage> {
             Container(
               margin: const EdgeInsets.only(top: 80.0),
               decoration: const BoxDecoration(
-                color: whiteFlat,
+                color: accentColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10.0),
                   topRight: Radius.circular(10.0),
@@ -68,15 +68,10 @@ class _WelcomeHomePageState extends State<WelcomeHomePage> {
                 const SizedBox(height: 10.0),
                 Text(
                   'Kamu belum didaftarkan \noleh Ketua Lingkungan setempat \n(RT, Cluster, Residence)',
-                  style: h3.copyWith(color: blackFlat),
+                  style: h3.copyWith(color: primaryColor),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 20.0),
-                Text(
-                  'Hubungi & Infokan Akun kamu',
-                  style: h4.copyWith(color: blackFlat),
-                  textAlign: TextAlign.center,
-                ),
+                const SizedBox(height: 10.0),
                 ButtonWide(
                   isLoading: false,
                   isEnabled: true,

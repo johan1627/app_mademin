@@ -33,13 +33,13 @@ class _CompWelAppBarState extends State<CompWelAppBar> {
                 child: Text(
                   "hello, ${authmo.name}",
                   overflow: TextOverflow.ellipsis,
-                  style: footFont.copyWith(color: whiteFlat),
+                  style: footFont.copyWith(color: accentColor),
                 ),
               ),
               Text(
-                "Ademin",
+                "temu warga",
                 style: h1.copyWith(
-                  color: whiteFlat,
+                  color: accentColor,
                   fontWeight: FontWeight.w700,
                 ),
               ),

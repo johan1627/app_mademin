@@ -2,10 +2,12 @@ import 'package:app_mademin/components/molecules/error_page.dart';
 import 'package:app_mademin/components/molecules/loading_page.dart';
 import 'package:app_mademin/config/config.dart';
 import 'package:app_mademin/providers/auth_provider.dart';
+import 'package:app_mademin/providers/house_user_provider.dart';
 import 'package:app_mademin/providers/misc_provider.dart';
 import 'package:app_mademin/screen/auth/sign_in/force_update_page.dart';
 import 'package:app_mademin/screen/auth/sign_in/sign_in.dart';
 import 'package:app_mademin/screen/auth/welcome_home/welcome_home.dart';
+import 'package:app_mademin/screen/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,9 +27,10 @@ class _HomeRootState extends State<HomeRoot> {
   //
   bool isLoading = false;
   bool isError = false;
-  bool isRegisteredUser = false;
   bool isForceUpdate = false;
   //
+  bool isRegisteredUser = false;
+  bool isRegisterHouseUser = false;
 
   Future<void> checkAuth(String? email) async {
     var resAuth =
@@ -71,6 +74,18 @@ class _HomeRootState extends State<HomeRoot> {
     }
   }
 
+  Future<void> checkHouseUser() async {
+    var res = await Provider.of<HouseUserProvider>(context, listen: false)
+        .fetchByAuth([1]);
+
+    if (res.statusCode == "200") {
+      //
+      setState(() {
+        isRegisterHouseUser = true;
+      });
+    }
+  }
+
   void init() async {
     if (mounted) {
       setState(() {
@@ -81,6 +96,7 @@ class _HomeRootState extends State<HomeRoot> {
     if (mounted) {
       await checkAuth(widget.email);
       await checkVersion();
+      await checkHouseUser();
     }
 
     if (mounted) {
@@ -116,7 +132,11 @@ class _HomeRootState extends State<HomeRoot> {
         page = const ForceUpdatePage();
       } else {
         if (isRegisteredUser) {
-          page = const WelcomeHomePage();
+          if (isRegisterHouseUser) {
+            page = const HomePage();
+          } else {
+            page = const WelcomeHomePage();
+          }
         } else {
           page = const SignInPage();
         }

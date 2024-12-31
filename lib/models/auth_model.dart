@@ -42,7 +42,7 @@ class Authmo {
       'uuid': uuid,
       'name': name,
       'email': email,
-      'people': peoplemo!.toJson(),
+      'peoplemo': peoplemo!.toJson(),
       'profilePhotoPath': profilePhotoPath,
       'lastLoginAt': lastLoginAt,
       'createdAt': createdAt,

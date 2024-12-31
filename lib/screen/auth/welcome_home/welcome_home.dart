@@ -68,7 +68,7 @@ class _WelcomeHomePageState extends State<WelcomeHomePage> {
                 const SizedBox(height: 10.0),
                 Text(
                   'Kamu belum didaftarkan \noleh Ketua Lingkungan setempat \n(RT, Cluster, Residence)',
-                  style: h3.copyWith(color: primaryColor),
+                  style: h3.copyWith(color: blackFlat),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10.0),

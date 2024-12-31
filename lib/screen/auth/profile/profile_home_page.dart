@@ -1,3 +1,4 @@
+import 'package:app_mademin/components/atoms/gen_avatar.dart';
 import 'package:app_mademin/components/atoms/gen_divider.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/components/molecules/genread.dart';
@@ -156,13 +157,13 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        // AvatarUrl(
-                        //   url: widget.authmo.profilePhotoPath,
-                        //   sizeWidth: 52,
-                        //   sizeHeight: 52,
-                        //   sizeRadius: 30,
-                        // ),
-                        // const SizedBox(width: 10.0),
+                        AvatarUrl(
+                          url: widget.authmo.profilePhotoPath,
+                          sizeWidth: 52,
+                          sizeHeight: 52,
+                          sizeRadius: 30,
+                        ),
+                        const SizedBox(width: 10.0),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

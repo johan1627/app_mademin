@@ -189,7 +189,7 @@ class _SignInPageState extends State<SignInPage> {
                             Align(
                               alignment: Alignment.centerRight,
                               child: TextLink(
-                                color: primaryColor,
+                                color: blackFlat,
                                 title: "Lupa kata sandi?",
                                 onPressed: () {
                                   // Go to
@@ -224,7 +224,7 @@ class _SignInPageState extends State<SignInPage> {
                             Align(
                               alignment: Alignment.center,
                               child: TextLink(
-                                color: primaryColor,
+                                color: blackFlat,
                                 title:
                                     "belum punya akun? daftar", // don't have account? sign up
                                 onPressed: () {
@@ -241,7 +241,7 @@ class _SignInPageState extends State<SignInPage> {
                             Align(
                               alignment: Alignment.center,
                               child: TextLink(
-                                color: primaryColor,
+                                color: blackFlat,
                                 title: "Perlu bantuan?",
                                 onPressed: () {
                                   function.getLaunchUrl(
@@ -270,14 +270,14 @@ class _SignInPageState extends State<SignInPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextLink(
-                      color: primaryColor,
+                      color: blackFlat,
                       title: "ketentuan",
                       onPressed: () {
                         function.getLaunchUrl("noonapos.com", "/term");
                       },
                     ),
                     TextLink(
-                      color: primaryColor,
+                      color: blackFlat,
                       title: "kebijakan privasi",
                       onPressed: () {
                         function.getLaunchUrl("noonapos.com", "/policy");
@@ -290,7 +290,7 @@ class _SignInPageState extends State<SignInPage> {
                   child: Text(
                     "versi apps $versionName",
                     style: smallFont.copyWith(
-                      color: primaryColor,
+                      color: blackFlat,
                     ),
                   ),
                 ),

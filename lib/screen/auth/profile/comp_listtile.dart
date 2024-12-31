@@ -33,7 +33,7 @@ class CompListTile extends StatelessWidget {
                   ),
                   title: Text(title,
                       style: lableFont.copyWith(
-                        color: primaryColor,
+                        color: blackFlat,
                       )),
                   trailing: const Icon(Icons.navigate_next),
                 ),

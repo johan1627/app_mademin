@@ -13,6 +13,7 @@ class ForceUpdatePage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: accentColor,
         body: Center(
           child: Container(
             margin: const EdgeInsets.only(left: 40.0, right: 40.0),
@@ -20,8 +21,8 @@ class ForceUpdatePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
-                  'assets/img/assets-03.png',
-                  scale: 2.0,
+                  'assets/img/temu-03.png',
+                  scale: 1.0,
                 ),
                 const SizedBox(height: 10.0),
                 Text(
@@ -36,9 +37,8 @@ class ForceUpdatePage extends StatelessWidget {
                   type: "primary",
                   lable: "Update Sekarang",
                   onSaved: () {
-                    // https://play.google.com/store/apps/details?id=com.app.mkasir
                     function.getLaunchUrl("play.google.com",
-                        "/store/apps/details?id=com.app.mkasir");
+                        "/store/apps/details?id=com.app.mademin");
                   },
                 ),
               ],

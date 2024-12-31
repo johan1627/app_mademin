@@ -16,7 +16,7 @@ class ErrorPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
-                  'assets/img/assets-06.png',
+                  'assets/img/temu-01.png',
                 ),
                 const SizedBox(height: 10.0),
                 Text(

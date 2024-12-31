@@ -62,7 +62,7 @@ class _WelcomeHomePageState extends State<WelcomeHomePage> {
                 Container(
                   margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                   child: Image.asset(
-                    'assets/img/assets-06.png',
+                    'assets/img/temu-02.png',
                   ),
                 ),
                 const SizedBox(height: 10.0),

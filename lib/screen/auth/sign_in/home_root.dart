@@ -4,7 +4,7 @@ import 'package:app_mademin/config/config.dart';
 import 'package:app_mademin/providers/auth_provider.dart';
 import 'package:app_mademin/providers/misc_provider.dart';
 import 'package:app_mademin/screen/auth/sign_in/force_update_page.dart';
-import 'package:app_mademin/screen/auth/sign_in/onboarding_page.dart';
+import 'package:app_mademin/screen/auth/sign_in/sign_in.dart';
 import 'package:app_mademin/screen/auth/welcome_home/welcome_home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -118,7 +118,7 @@ class _HomeRootState extends State<HomeRoot> {
         if (isRegisteredUser) {
           page = const WelcomeHomePage();
         } else {
-          page = const OnBoardingPage();
+          page = const SignInPage();
         }
       }
     }

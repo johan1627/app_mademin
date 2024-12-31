@@ -28,13 +28,20 @@ class _CompWelAppBarState extends State<CompWelAppBar> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "hello, ${authmo.name}",
-                style: footFont.copyWith(color: whiteFlat),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: Text(
+                  "hello, ${authmo.name}",
+                  overflow: TextOverflow.ellipsis,
+                  style: footFont.copyWith(color: whiteFlat),
+                ),
               ),
               Text(
                 "Ademin",
-                style: lableFont.copyWith(color: whiteFlat),
+                style: h1.copyWith(
+                  color: whiteFlat,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ],
           ),
@@ -47,8 +54,8 @@ class _CompWelAppBarState extends State<CompWelAppBar> {
             },
             child: AvatarUrl(
               url: authmo.profilePhotoPath,
-              sizeWidth: 28,
-              sizeHeight: 28,
+              sizeWidth: 36,
+              sizeHeight: 36,
               sizeRadius: 30,
             ),
           ),

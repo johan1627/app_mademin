@@ -95,8 +95,8 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
     showDialog(
       context: context,
       builder: (_) => AlertdialogDuaAction(
-        title: 'Keluar',
-        content: 'Yakin mau keluar?',
+        title: 'Keluar Akun',
+        content: 'Mau keluar dari Akun kamu?',
         actionsatuOnTap: () {
           Navigator.of(context, rootNavigator: true).pop();
         },
@@ -167,13 +167,21 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "${widget.authmo.name}",
-                              style: footFont.copyWith(color: blackFlat),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width / 2,
+                              child: Text(
+                                "${widget.authmo.name}",
+                                overflow: TextOverflow.ellipsis,
+                                style: footFont.copyWith(color: blackFlat),
+                              ),
                             ),
-                            Text(
-                              "${widget.authmo.email}",
-                              style: footFont.copyWith(color: blackLight),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width / 2,
+                              child: Text(
+                                "${widget.authmo.email}",
+                                overflow: TextOverflow.ellipsis,
+                                style: footFont.copyWith(color: blackLight),
+                              ),
                             ),
                           ],
                         ),

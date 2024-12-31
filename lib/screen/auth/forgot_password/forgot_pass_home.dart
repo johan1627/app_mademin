@@ -107,7 +107,7 @@ class _ForgotPasswordHomeState extends State<ForgotPasswordHome> {
       isEnableBtn: isEnabledSaved,
       isLoading: isLoading,
       btnIcon: Icons.forward_to_inbox,
-      btnLable: "Kirim",
+      btnLable: "Kirim Sekarang",
     );
   }
 }

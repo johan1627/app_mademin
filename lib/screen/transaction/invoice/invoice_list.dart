@@ -46,7 +46,7 @@ class _InvoiceListBuilderState extends State<InvoiceListBuilder> {
       });
 
       var check = itemInvoiceDatas.length - (_currentPage * 10);
-      if (check < 0) {
+      if (check <= 0) {
         setState(() {
           hasMore = false;
         });
@@ -169,6 +169,7 @@ class _InvoiceListBuilderState extends State<InvoiceListBuilder> {
           child: RefreshIndicator(
             onRefresh: onRefresh,
             child: ListView.builder(
+                physics: const AlwaysScrollableScrollPhysics(),
                 controller: _scrollController,
                 itemCount: itemInvoiceDatas.length + 1,
                 itemBuilder: (BuildContext context, int i) {
@@ -194,7 +195,16 @@ class _InvoiceListBuilderState extends State<InvoiceListBuilder> {
                       if (hasMore) {
                         return const CupertinoActivityIndicator();
                       } else {
-                        return const SizedBox();
+                        return Center(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 8.0,
+                          ),
+                          child: Text(
+                            "No more data",
+                            style: footFont,
+                          ),
+                        ));
                       }
                     }
                   } else {

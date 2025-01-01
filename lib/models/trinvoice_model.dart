@@ -6,10 +6,11 @@ import 'package:app_mademin/models/status_model.dart';
 
 class TrInvoicemo {
   String? uuid;
-  String? dueAt;
+  DateTime? dueAt;
   String? dueStatus;
   String? invNumber;
   PaymentGroupmo? paymentGroupmo;
+  String? paymentDescription;
   int? ramount;
   Statusmo? statusmo;
   Color? statusColor;
@@ -24,6 +25,7 @@ class TrInvoicemo {
     this.dueStatus,
     this.invNumber,
     this.paymentGroupmo,
+    this.paymentDescription,
     this.ramount,
     this.statusmo,
     this.statusColor,
@@ -49,10 +51,11 @@ class TrInvoicemo {
     }
 
     uuid = json["uuid"];
-    dueAt = json["due_at"];
+    dueAt = DateTime.parse(json["due_at"]);
     dueStatus = json["due_status"];
     invNumber = json["inv_number"];
     paymentGroupmo = PaymentGroupmo.fromJson(json["payment_group"]);
+    paymentDescription = json["payment_description"];
     ramount = json["ramount"];
     statusmo = Statusmo.fromJson(json["status"]);
     statusColor = statusColorTemp;
@@ -69,6 +72,7 @@ class TrInvoicemo {
       'dueStatus': dueStatus,
       'invNumber': invNumber,
       'paymentGroupmo': paymentGroupmo!.toJson(),
+      'paymentDescription': paymentDescription,
       'ramount': ramount,
       'statusmo': statusmo!.toJson(),
       'statusColor': statusColor,

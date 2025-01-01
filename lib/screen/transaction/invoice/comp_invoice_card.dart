@@ -16,11 +16,41 @@ class CompInvoiceCard extends StatelessWidget {
     // import
     GeneralFunction function = GeneralFunction();
 
-    var datetime = function.dateformat1(trInvoicemo.createdAt!);
+    var paymentAt = function.dateformat1(trInvoicemo.paymentAt!);
+    var dueAt = function.dateformat5(trInvoicemo.dueAt!);
+
+    Widget datee;
+    if (trInvoicemo.statusmo!.id == 1) {
+      datee = Row(
+        children: [
+          Text(
+            "Tgl. Bayar: ",
+            style: footFont,
+          ),
+          Text(
+            paymentAt,
+            style: footFont,
+          ),
+        ],
+      );
+    } else {
+      datee = Row(
+        children: [
+          Text(
+            "Jatuh tempo: ",
+            style: footFont,
+          ),
+          Text(
+            dueAt,
+            style: footFont,
+          ),
+        ],
+      );
+    }
 
     return Container(
       width: double.infinity,
-      height: 80,
+      height: 110,
       margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       decoration: BoxDecoration(
@@ -53,9 +83,10 @@ class CompInvoiceCard extends StatelessWidget {
                   style: footFont,
                 ),
                 Text(
-                  datetime,
+                  "${trInvoicemo.paymentDescription}",
                   style: footFont,
                 ),
+                datee,
                 // ButtonText(
                 //   lable: "Lihat rincian",
                 //   onTap: () {

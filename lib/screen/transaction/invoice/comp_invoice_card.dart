@@ -69,22 +69,31 @@ class CompInvoiceCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Visibility(
-                  visible: true,
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
                   child: Text(
                     "${trInvoicemo.paymentGroupmo!.description}",
+                    overflow: TextOverflow.ellipsis,
                     style: footFont.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-                Text(
-                  "INV ${trInvoicemo.invNumber}",
-                  style: footFont,
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: Text(
+                    "${trInvoicemo.invNumber}",
+                    overflow: TextOverflow.ellipsis,
+                    style: footFont,
+                  ),
                 ),
-                Text(
-                  "${trInvoicemo.paymentDescription}",
-                  style: footFont,
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: Text(
+                    "${trInvoicemo.paymentDescription}",
+                    overflow: TextOverflow.ellipsis,
+                    style: footFont,
+                  ),
                 ),
                 datee,
                 // ButtonText(

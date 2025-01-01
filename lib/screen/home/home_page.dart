@@ -3,6 +3,7 @@ import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/screen/auth/welcome_home/comp_wappbar.dart';
 import 'package:app_mademin/screen/home/components/comp_sec_bg_white.dart';
 import 'package:app_mademin/screen/home/components/comp_sec_card_top.dart';
+import 'package:app_mademin/screen/home/components/comp_sec_invoice_last.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,6 +39,7 @@ class _HomePageState extends State<HomePage> {
               children: const [
                 CompWelAppBar(),
                 CompSectionCardTop(),
+                CompSectionInvoiceLast(),
               ],
             )
           ],

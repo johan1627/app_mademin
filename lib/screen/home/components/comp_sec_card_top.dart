@@ -1,6 +1,5 @@
 import 'package:app_mademin/components/atoms/gen_function.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
-import 'package:app_mademin/screen/transaction/invoice/invoice_home.dart';
 import 'package:flutter/material.dart';
 
 class CompSectionCardTop extends StatefulWidget {
@@ -55,10 +54,10 @@ class _CompSectionCardTopState extends State<CompSectionCardTop> {
                     InkWell(
                       onTap: () {
                         // Go to
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const InvoiceHomePage(),
-                        ));
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //   builder: (BuildContext context) =>
+                        //       const InvoiceHomePage(),
+                        // ));
                       },
                       child: Column(
                         children: [
@@ -67,7 +66,7 @@ class _CompSectionCardTopState extends State<CompSectionCardTop> {
                             color: whiteFlat,
                             size: 34.0,
                           ),
-                          Text("Invoice",
+                          Text("Lapak",
                               style: footFont.copyWith(
                                 color: whiteFlat,
                               )),

@@ -13,6 +13,7 @@ class GeneralCreatePages extends StatelessWidget {
   final bool isLoading;
   final String btnLable;
   final IconData btnIcon;
+  final String btnType;
 
   const GeneralCreatePages({
     super.key,
@@ -23,6 +24,7 @@ class GeneralCreatePages extends StatelessWidget {
     required this.onSaved,
     required this.isEnableBtn,
     required this.isLoading,
+    this.btnType = "primary", // primary, third
     this.btnLable = "SIMPAN",
     this.btnIcon = Icons.save_outlined,
   });
@@ -128,7 +130,7 @@ class GeneralCreatePages extends StatelessWidget {
                     iconData: btnIcon,
                     isLoading: isLoading,
                     isEnabled: isEnableBtn,
-                    type: "primary",
+                    type: btnType,
                     lable: btnLable,
                     onSaved: onSaved,
                   ),

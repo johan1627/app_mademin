@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:app_mademin/components/misc/const_styles.dart';
+import 'package:app_mademin/models/house_model.dart';
 import 'package:app_mademin/models/payment_group_model.dart';
 import 'package:app_mademin/models/people_model.dart';
 import 'package:app_mademin/models/status_model.dart';
@@ -8,6 +9,7 @@ class TrInvoicemo {
   String? uuid;
   DateTime? dueAt;
   String? dueStatus;
+  Housemo? housemo;
   String? invNumber;
   PaymentGroupmo? paymentGroupmo;
   String? paymentDescription;
@@ -23,6 +25,7 @@ class TrInvoicemo {
     this.uuid,
     this.dueAt,
     this.dueStatus,
+    this.housemo,
     this.invNumber,
     this.paymentGroupmo,
     this.paymentDescription,
@@ -53,6 +56,7 @@ class TrInvoicemo {
     uuid = json["uuid"];
     dueAt = DateTime.parse(json["due_at"]);
     dueStatus = json["due_status"];
+    housemo = Housemo.fromJson(json["house"]);
     invNumber = json["inv_number"];
     paymentGroupmo = PaymentGroupmo.fromJson(json["payment_group"]);
     paymentDescription = json["payment_description"];
@@ -70,6 +74,7 @@ class TrInvoicemo {
       'uuid': uuid,
       'dueAt': dueAt,
       'dueStatus': dueStatus,
+      'housemo': housemo,
       'invNumber': invNumber,
       'paymentGroupmo': paymentGroupmo!.toJson(),
       'paymentDescription': paymentDescription,

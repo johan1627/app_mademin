@@ -119,4 +119,10 @@ class GeneralFunction {
     ));
     return Future.value(true);
   }
+
+  void copyToClipboard(String text, BuildContext context) {
+    Clipboard.setData(ClipboardData(text: text));
+
+    snackBar(context, "Berhasil disalin", 4);
+  }
 }

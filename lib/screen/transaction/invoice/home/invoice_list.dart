@@ -2,7 +2,7 @@ import 'package:app_mademin/components/atoms/gen_badge_filter.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/components/molecules/search_empty.dart';
 import 'package:app_mademin/providers/trinvoice_provider.dart';
-import 'package:app_mademin/screen/transaction/invoice/comp_invoice_card.dart';
+import 'package:app_mademin/screen/transaction/invoice/home/comp_invoice_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +46,7 @@ class _InvoiceListBuilderState extends State<InvoiceListBuilder> {
       });
 
       var check = itemInvoiceDatas.length - (_currentPage * 10);
+
       if (check <= 0) {
         setState(() {
           hasMore = false;

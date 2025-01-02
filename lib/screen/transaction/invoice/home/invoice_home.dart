@@ -1,5 +1,5 @@
 import 'package:app_mademin/components/molecules/genread.dart';
-import 'package:app_mademin/screen/transaction/invoice/invoice_list.dart';
+import 'package:app_mademin/screen/transaction/invoice/home/invoice_list.dart';
 import 'package:flutter/material.dart';
 
 class InvoiceHomePage extends StatefulWidget {

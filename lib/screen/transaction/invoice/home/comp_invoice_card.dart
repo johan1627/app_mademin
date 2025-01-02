@@ -1,6 +1,8 @@
+import 'package:app_mademin/components/atoms/gen_button.dart';
 import 'package:app_mademin/components/atoms/gen_function.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/models/trinvoice_model.dart';
+import 'package:app_mademin/screen/transaction/invoice/payment/invoice_payment.dart';
 import 'package:flutter/material.dart';
 
 class CompInvoiceCard extends StatelessWidget {
@@ -82,31 +84,23 @@ class CompInvoiceCard extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 2,
                   child: Text(
-                    "${trInvoicemo.invNumber}",
-                    overflow: TextOverflow.ellipsis,
-                    style: footFont,
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: Text(
                     "${trInvoicemo.paymentDescription}",
                     overflow: TextOverflow.ellipsis,
                     style: footFont,
                   ),
                 ),
                 datee,
-                // ButtonText(
-                //   lable: "Lihat rincian",
-                //   onTap: () {
-                //     Navigator.of(context).push(MaterialPageRoute(
-                //       builder: (BuildContext context) => HistoryDetailPage(
-                //         transactionDatamo: transactionDatamo,
-                //       ),
-                //     ));
-                //   },
-                //   color: blackFlat,
-                // ),
+                ButtonText(
+                  lable: "Bayar Tagihan",
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => InvoicePaymentPage(
+                        trInvoicemo: trInvoicemo,
+                      ),
+                    ));
+                  },
+                  color: blackFlat,
+                ),
               ],
             ),
             Column(

@@ -18,167 +18,183 @@ class CompInvoiceDetailCard extends StatelessWidget {
 
     var dueAt = function.dateformat4(trInvoicemo.dueAt!);
 
-    return Container(
-        decoration: BoxDecoration(
-          color: whiteFlat,
-          border: Border.all(color: greyColor),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(10.0),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+          child: Text(
+            "Tagihan",
+            style: h4.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+            textAlign: TextAlign.left,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10.0,
-            vertical: 10.0,
-          ),
-          child: Column(
-            children: [
-              //
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Tgl. jatuh tempo :", style: footFont),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(dueAt,
-                            style: lableFont,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.end)),
-                  ],
-                ),
+        Container(
+            decoration: BoxDecoration(
+              color: whiteFlat,
+              border: Border.all(color: greyColor),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10.0),
               ),
-              //
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("No. Tagihan :", style: footFont),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            InkWell(
-                                onTap: () {
-                                  function.copyToClipboard(
-                                      trInvoicemo.invNumber!, context);
-                                },
-                                child: const Icon(Icons.copy, size: 14.0)),
-                            const SizedBox(width: 4.0),
-                            Text(trInvoicemo.invNumber!,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10.0,
+                vertical: 10.0,
+              ),
+              child: Column(
+                children: [
+                  //
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Tgl. jatuh tempo :", style: footFont),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(dueAt,
                                 style: lableFont,
                                 overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.end),
-                          ],
-                        ))
-                  ],
-                ),
+                                textAlign: TextAlign.end)),
+                      ],
+                    ),
+                  ),
+                  //
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("No. Tagihan :", style: footFont),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                InkWell(
+                                    onTap: () {
+                                      function.copyToClipboard(
+                                          trInvoicemo.invNumber!, context);
+                                    },
+                                    child: const Icon(Icons.copy, size: 14.0)),
+                                const SizedBox(width: 4.0),
+                                Text(trInvoicemo.invNumber!,
+                                    style: lableFont,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.end),
+                              ],
+                            ))
+                      ],
+                    ),
+                  ),
+                  //
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Perumahan :", style: footFont),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(trInvoicemo.housemo!.tenantmo!.name!,
+                                style: lableFont,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.end))
+                      ],
+                    ),
+                  ),
+                  //
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Rumah :", style: footFont),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(trInvoicemo.housemo!.houseAddress!,
+                                style: lableFont,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.end))
+                      ],
+                    ),
+                  ),
+                  //
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Tagihan :", style: footFont),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(
+                                trInvoicemo.paymentGroupmo!.description!,
+                                style: lableFont,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.end))
+                      ],
+                    ),
+                  ),
+                  //
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Catatan :", style: footFont),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(trInvoicemo.paymentDescription!,
+                                style: lableFont,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.end))
+                      ],
+                    ),
+                  ),
+                  //
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Nominal :", style: footFont),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(
+                                "IDR. ${function.formatRupiah(trInvoicemo.ramount.toString())}",
+                                style: lableFont,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.end))
+                      ],
+                    ),
+                  ),
+                  //
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Status :", style: footFont),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(trInvoicemo.statusmo!.name!,
+                                style: lableFont.copyWith(
+                                  color: trInvoicemo.statusColor,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.end))
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              //
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Perumahan :", style: footFont),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(trInvoicemo.housemo!.tenantmo!.name!,
-                            style: lableFont,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.end))
-                  ],
-                ),
-              ),
-              //
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Rumah :", style: footFont),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(trInvoicemo.housemo!.houseAddress!,
-                            style: lableFont,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.end))
-                  ],
-                ),
-              ),
-              //
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Tagihan :", style: footFont),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(trInvoicemo.paymentGroupmo!.description!,
-                            style: lableFont,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.end))
-                  ],
-                ),
-              ),
-              //
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Catatan :", style: footFont),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(trInvoicemo.paymentDescription!,
-                            style: lableFont,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.end))
-                  ],
-                ),
-              ),
-              //
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Nominal :", style: footFont),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(
-                            "IDR. ${function.formatRupiah(trInvoicemo.ramount.toString())}",
-                            style: lableFont,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.end))
-                  ],
-                ),
-              ),
-              //
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Status :", style: footFont),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(trInvoicemo.statusmo!.name!,
-                            style: lableFont.copyWith(
-                              color: trInvoicemo.statusColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.end))
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ));
+            )),
+      ],
+    );
   }
 }

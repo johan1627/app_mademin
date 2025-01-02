@@ -1,14 +1,81 @@
 import 'package:app_mademin/components/misc/const_styles.dart';
+import 'package:app_mademin/config/config.dart';
+import 'package:app_mademin/models/payment_method_model.dart';
+import 'package:app_mademin/providers/payment_method_provider.dart';
+import 'package:app_mademin/providers/trtransaction_provider.dart';
+import 'package:app_mademin/screen/transaction/invoice/payment/comp_channel_code.dart';
+import 'package:app_mademin/screen/transaction/invoice/payment/comp_channel_code_empty_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class CompInvoiceMethodPayment extends StatelessWidget {
+class CompInvoiceMethodPayment extends StatefulWidget {
   const CompInvoiceMethodPayment({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    //
-    bool? selectedPaymentMethod;
+  State<CompInvoiceMethodPayment> createState() =>
+      _CompInvoiceMethodPaymentState();
+}
 
+class _CompInvoiceMethodPaymentState extends State<CompInvoiceMethodPayment> {
+  // initial
+  bool? selectedPaymentMethod;
+  List<PaymentMethodmo>? items;
+  List<Widget> itemsChannelCode = [];
+
+  void fetchData() async {
+    var res = await Provider.of<PaymentMethodProvider>(context, listen: false)
+        .optionPaymentMethod("PKZKWZ5HUFUOMLG7QJ3BSYX7OTCANWZZ");
+
+    if (res.statusCode == "200") {
+      // paymentMethods
+      var paymentMethods = res.value!;
+      for (var e = 0; e < paymentMethods.length; e++) {
+        // channelCodes
+        var channelCodes = paymentMethods[e].channelCode!;
+        for (var i = 0; i < channelCodes.length; i++) {
+          itemsChannelCode.add(
+            Consumer<TrTransactionProvider>(
+              builder: (context, value, child) => InkWell(
+                onTap: () {
+                  value.channelCode = channelCodes[i].channelCode.toString();
+                  value.channelCodeImgPath =
+                      "$domain${channelCodes[i].channelCodeImgPath}";
+
+                  // print("${channelCodes[i].id}");
+                  // print("${channelCodes[i].paymentProvider}");
+                  // print("${channelCodes[i].paymentType}");
+                  // print("${channelCodes[i].channelCodeImgPath}");
+                  Navigator.of(context).pop();
+                },
+                child: CompChannelCode(
+                  channelCode: "${channelCodes[i].channelCode}",
+                  channelCodeUrl:
+                      "$domain${channelCodes[i].channelCodeImgPath}",
+                ),
+              ),
+            ),
+          );
+        }
+      }
+
+      setState(() {
+        items = res.value;
+      });
+    } else {
+      setState(() {
+        items = [];
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    fetchData();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: Column(
@@ -27,42 +94,72 @@ class CompInvoiceMethodPayment extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text("Lihat Semua",
-                    style: footFont.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: primaryColor,
-                    )),
+                InkWell(
+                  onTap: () {
+                    showBottomSheetWithData(context);
+                  },
+                  child: Text("Lihat Semua",
+                      style: footFont.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: primaryColor,
+                      )),
+                ),
               ],
             ),
           ),
           //
-          Container(
-              decoration: BoxDecoration(
-                color: whiteFlat,
-                border: Border.all(color: greyColor),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(10.0),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("OVO",
-                        style: h3.copyWith(fontWeight: FontWeight.w600)),
-                    Radio<bool>(
-                        value: true,
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (e) {
-                          //
-                        }),
-                  ],
-                ),
-              )),
+          Consumer<TrTransactionProvider>(
+            builder: (context, value, _) => value.channelCode == ""
+                ? InkWell(
+                    onTap: () {
+                      showBottomSheetWithData(context);
+                    },
+                    child: const CompChannelCodeEmptyCard(),
+                  )
+                : CompChannelCode(
+                    channelCode: value.channelCode,
+                    channelCodeUrl: value.channelCodeImgPath,
+                  ),
+          ),
         ],
       ),
+    );
+  }
+
+  void showBottomSheetWithData(BuildContext context) async {
+    // Show the bottom sheet
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return FractionallySizedBox(
+          heightFactor: 0.5,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListView.builder(
+              itemCount: items!.length,
+              itemBuilder: (context, i) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${items![i].paymentMethod}",
+                      style: h4.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 10.0),
+                    // Text("${itemsChannelCode.length}"),
+                    Column(
+                      children: itemsChannelCode,
+                    )
+                  ],
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }

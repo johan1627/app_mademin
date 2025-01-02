@@ -2,7 +2,7 @@ import 'package:app_mademin/models/channel_code_model.dart';
 
 class PaymentMethodmo {
   String? paymentMethod;
-  List<ChannelCodemo>? channelCode;
+  List<dynamic>? channelCode;
 
   PaymentMethodmo({
     this.paymentMethod,

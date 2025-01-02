@@ -9,6 +9,7 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: accentColor,
         body: Center(
           child: Container(
             margin: const EdgeInsets.only(left: 30.0, right: 30.0),

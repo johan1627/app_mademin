@@ -10,6 +10,7 @@ class ConnectionErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: accentColor,
         body: Center(
           child: Container(
             margin: const EdgeInsets.only(left: 40.0, right: 40.0),

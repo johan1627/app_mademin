@@ -1,6 +1,10 @@
 import 'package:app_mademin/components/atoms/gen_function.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
+import 'package:app_mademin/providers/trinvoice_provider.dart';
+import 'package:app_mademin/screen/home/components/comp_icon_top.dart';
+import 'package:app_mademin/screen/transaction/invoice/home/invoice_home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CompSectionCardTop extends StatefulWidget {
   const CompSectionCardTop({super.key});
@@ -51,29 +55,27 @@ class _CompSectionCardTopState extends State<CompSectionCardTop> {
                 // Transaksi
                 Row(
                   children: [
-                    InkWell(
-                      onTap: () {
-                        // Go to
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (BuildContext context) =>
-                        //       const InvoiceHomePage(),
-                        // ));
-                      },
-                      child: Column(
-                        children: [
-                          const Icon(
-                            Icons.storefront_outlined,
-                            color: whiteFlat,
-                            size: 34.0,
-                          ),
-                          Text("Lapak",
-                              style: footFont.copyWith(
-                                color: whiteFlat,
-                              )),
-                        ],
+                    Consumer<TrInvoiceProvider>(
+                      builder: (context, value, _) => CompIconTop(
+                        icon: Icons.storefront_outlined,
+                        lable: "Tagihan",
+                        onTap: () {
+                          // Go to
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const InvoiceHomePage(),
+                          ));
+                        },
+                        countNotification: value.countTagihan,
                       ),
                     ),
                     const SizedBox(width: 14.0),
+                    CompIconTop(
+                      icon: Icons.storefront_outlined,
+                      lable: "Lapak",
+                      onTap: () {},
+                      countNotification: 0,
+                    ),
                   ],
                 )
               ],

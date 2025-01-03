@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class TrInvoiceServices {
   Future<ApiReturnValue<List<TrInvoicemo>>> fetchByAuth(
     List<int> status,
-    int page,
+    int? page,
   ) async {
     var url = "$baseUrl/tr-invoices/fetch-by-auth";
 

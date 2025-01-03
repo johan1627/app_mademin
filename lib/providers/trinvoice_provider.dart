@@ -29,8 +29,16 @@ class TrInvoiceProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  int _countTagihan = 0;
+  int get countTagihan => _countTagihan;
+
+  set countTagihan(int countTagihan) {
+    _countTagihan = countTagihan;
+    notifyListeners();
+  }
+
   Future<ApiReturnValue<List<TrInvoicemo>>> fetchByAuth(
-      List<int> status, int page) async {
+      List<int> status, int? page) async {
     try {
       ApiReturnValue<List<TrInvoicemo>> value =
           await TrInvoiceServices().fetchByAuth(status, page);

@@ -27,6 +27,8 @@ class _CompSectionInvoiceLastState extends State<CompSectionInvoiceLast> {
         itemInvoiceDatas.addAll(res.value!);
       });
     }
+    //
+    onFetchTagihan();
   }
 
   Future<List<dynamic>> items() async {
@@ -38,6 +40,22 @@ class _CompSectionInvoiceLastState extends State<CompSectionInvoiceLast> {
     } else {
       return [];
     }
+  }
+
+  void onFetchTagihan() async {
+    var res = await Provider.of<TrInvoiceProvider>(context, listen: false)
+        .fetchByAuth([0], null);
+    if (res.statusCode == "200") {
+      var count = res.value!.length;
+      saveToState(count);
+    }
+  }
+
+  void saveToState(int value) {
+    TrInvoiceProvider trInvoiceProvider =
+        Provider.of<TrInvoiceProvider>(context, listen: false);
+
+    trInvoiceProvider.countTagihan = value;
   }
 
   @override

@@ -1,7 +1,7 @@
 import 'package:app_mademin/components/atoms/gen_function.dart';
 import 'package:app_mademin/components/atoms/gen_textfield.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
-import 'package:app_mademin/components/molecules/gencreate.dart';
+import 'package:app_mademin/components/molecules/gen_create_page.dart';
 import 'package:app_mademin/providers/auth_provider.dart';
 import 'package:app_mademin/screen/auth/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';

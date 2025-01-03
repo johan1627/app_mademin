@@ -1,5 +1,5 @@
 import 'package:app_mademin/components/molecules/error_page.dart';
-import 'package:app_mademin/components/molecules/loading_page.dart';
+import 'package:app_mademin/components/atoms/gen_loading_page.dart';
 import 'package:app_mademin/config/config.dart';
 import 'package:app_mademin/providers/auth_provider.dart';
 import 'package:app_mademin/providers/house_user_provider.dart';

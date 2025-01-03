@@ -1,4 +1,4 @@
-import 'package:app_mademin/components/molecules/loading_page.dart';
+import 'package:app_mademin/components/atoms/gen_loading_page.dart';
 import 'package:app_mademin/models/auth_model.dart';
 import 'package:app_mademin/providers/auth_provider.dart';
 import 'package:app_mademin/screen/auth/profile/profile_home_page.dart';

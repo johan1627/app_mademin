@@ -1,6 +1,8 @@
 import 'package:app_mademin/components/misc/const_styles.dart';
+import 'package:app_mademin/components/molecules/gen_bottomsheet_modal.dart';
 import 'package:app_mademin/config/config.dart';
 import 'package:app_mademin/models/payment_method_model.dart';
+import 'package:app_mademin/models/trinvoice_model.dart';
 import 'package:app_mademin/providers/payment_method_provider.dart';
 import 'package:app_mademin/providers/trtransaction_provider.dart';
 import 'package:app_mademin/screen/transaction/invoice/payment/comp_channel_code_empty_card.dart';
@@ -10,7 +12,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CompInvoiceMethodPayment extends StatefulWidget {
-  const CompInvoiceMethodPayment({super.key});
+  final TrInvoicemo trInvoicemo;
+
+  const CompInvoiceMethodPayment({
+    super.key,
+    required this.trInvoicemo,
+  });
 
   @override
   State<CompInvoiceMethodPayment> createState() =>
@@ -23,9 +30,15 @@ class _CompInvoiceMethodPaymentState extends State<CompInvoiceMethodPayment> {
   List<PaymentMethodmo>? items;
   List<Widget> itemsChannelCode = [];
 
+  // import
+  BottomSheetModalFunction bottomSheetModalFunction =
+      BottomSheetModalFunction();
+
   void fetchData() async {
+    var tenantId = widget.trInvoicemo.housemo!.tenantmo!.uuid!;
+
     var res = await Provider.of<PaymentMethodProvider>(context, listen: false)
-        .optionPaymentMethod("PKZKWZ5HUFUOMLG7QJ3BSYX7OTCANWZZ");
+        .optionPaymentMethod(tenantId);
 
     if (res.statusCode == "200") {
       // paymentMethods
@@ -99,7 +112,11 @@ class _CompInvoiceMethodPaymentState extends State<CompInvoiceMethodPayment> {
                 ),
                 InkWell(
                   onTap: () {
-                    showBottomSheetWithData(context);
+                    bottomSheetModalFunction.showForPaymentMethod(
+                      context,
+                      items!,
+                      itemsChannelCode,
+                    );
                   },
                   child: Text("Lihat Semua",
                       style: footFont.copyWith(
@@ -115,13 +132,21 @@ class _CompInvoiceMethodPaymentState extends State<CompInvoiceMethodPayment> {
             builder: (context, value, _) => value.channelCode == ""
                 ? InkWell(
                     onTap: () {
-                      showBottomSheetWithData(context);
+                      bottomSheetModalFunction.showForPaymentMethod(
+                        context,
+                        items!,
+                        itemsChannelCode,
+                      );
                     },
                     child: const CompChannelCodeEmptyCard(),
                   )
                 : InkWell(
                     onTap: () {
-                      showBottomSheetWithData(context);
+                      bottomSheetModalFunction.showForPaymentMethod(
+                        context,
+                        items!,
+                        itemsChannelCode,
+                      );
                     },
                     child: CompChannelCodeWithArrowCard(
                       channelCode: value.channelCode,
@@ -131,42 +156,6 @@ class _CompInvoiceMethodPaymentState extends State<CompInvoiceMethodPayment> {
           ),
         ],
       ),
-    );
-  }
-
-  void showBottomSheetWithData(BuildContext context) async {
-    // Show the bottom sheet
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return FractionallySizedBox(
-          heightFactor: 0.5,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: ListView.builder(
-              itemCount: items!.length,
-              itemBuilder: (context, i) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${items![i].paymentMethod}",
-                      style: h4.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 10.0),
-                    Column(
-                      children: itemsChannelCode,
-                    )
-                  ],
-                );
-              },
-            ),
-          ),
-        );
-      },
     );
   }
 }

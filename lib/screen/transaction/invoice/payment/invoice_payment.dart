@@ -1,4 +1,4 @@
-import 'package:app_mademin/components/molecules/gencreate.dart';
+import 'package:app_mademin/components/molecules/gen_create_page.dart';
 import 'package:app_mademin/models/trinvoice_model.dart';
 import 'package:app_mademin/providers/trtransaction_provider.dart';
 import 'package:app_mademin/screen/transaction/invoice/payment/comp_invoice_detail_card.dart';
@@ -47,7 +47,7 @@ class _InvoicePaymentPageState extends State<InvoicePaymentPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const CompInvoiceMethodPayment(),
+                  CompInvoiceMethodPayment(trInvoicemo: widget.trInvoicemo),
                   CompPaymentTotalCard(
                     isVisible: value.channelCode == "" ? false : true,
                     invoiceAmount: widget.trInvoicemo.ramount!,

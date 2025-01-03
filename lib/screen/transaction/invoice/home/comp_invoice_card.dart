@@ -57,7 +57,7 @@ class CompInvoiceCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       decoration: BoxDecoration(
-        color: whiteFlat,
+        color: Colors.white,
         border: Border.all(color: greyColor),
         borderRadius: const BorderRadius.all(
           Radius.circular(10.0),

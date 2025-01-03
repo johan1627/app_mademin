@@ -33,7 +33,7 @@ class CompInvoiceDetailCard extends StatelessWidget {
         ),
         Container(
             decoration: BoxDecoration(
-              color: whiteFlat,
+              color: Colors.white,
               border: Border.all(color: greyColor),
               borderRadius: const BorderRadius.all(
                 Radius.circular(10.0),

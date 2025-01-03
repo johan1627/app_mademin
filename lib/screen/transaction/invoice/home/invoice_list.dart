@@ -18,7 +18,7 @@ class _InvoiceListBuilderState extends State<InvoiceListBuilder> {
   // initial
   List<dynamic> itemInvoiceDatas = [];
   List<String> badgeItemString = [
-    "Menunggu",
+    "Belum bayar",
     "Gagal",
     "Lunas",
   ];
@@ -116,8 +116,8 @@ class _InvoiceListBuilderState extends State<InvoiceListBuilder> {
   }
 
   void filtered(String value) {
-    int status = 0; // Menunggu
-    if (value == "Menunggu") {
+    int status = 0; // Belum bayar
+    if (value == "Belum bayar") {
       status = 0;
     } else if (value == "Lunas") {
       status = 1;

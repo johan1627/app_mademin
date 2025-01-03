@@ -1,6 +1,8 @@
 import 'package:app_mademin/components/molecules/gen_read_page.dart';
+import 'package:app_mademin/providers/trinvoice_provider.dart';
 import 'package:app_mademin/screen/transaction/invoice/home/invoice_list.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class InvoiceHomePage extends StatefulWidget {
   const InvoiceHomePage({super.key});
@@ -17,6 +19,13 @@ class _InvoiceHomePageState extends State<InvoiceHomePage> {
 
   // function
   Future<bool> back() async {
+    // clear state
+    TrInvoiceProvider trInvoiceProvider =
+        Provider.of<TrInvoiceProvider>(context, listen: false);
+
+    trInvoiceProvider.filtering = "Belum bayar";
+
+    //
     Navigator.of(context).pop();
     return true;
   }

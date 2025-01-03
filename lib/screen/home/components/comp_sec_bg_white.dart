@@ -9,7 +9,7 @@ class CompSectionBgWhite extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 180.0), // 160.0
       decoration: const BoxDecoration(
-        color: accentColor,
+        color: whiteFlat,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10.0),
           topRight: Radius.circular(10.0),

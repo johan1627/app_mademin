@@ -21,7 +21,7 @@ class TrInvoiceProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  String _filtering = "Menunggu";
+  String _filtering = "Belum bayar";
   String get filtering => _filtering;
 
   set filtering(String filtering) {

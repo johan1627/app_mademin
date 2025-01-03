@@ -10,7 +10,7 @@ class CompChannelCodeEmptyCard extends StatelessWidget {
       height: 90.0,
       margin: const EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
-          color: whiteFlat,
+          color: Colors.white,
           border: Border.all(color: greyColor),
           borderRadius: const BorderRadius.all(Radius.circular(10.0))),
       child: Padding(

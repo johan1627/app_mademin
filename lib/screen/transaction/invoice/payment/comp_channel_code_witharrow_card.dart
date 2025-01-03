@@ -1,8 +1,15 @@
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:flutter/material.dart';
 
-class CompChannelCodeEmptyCard extends StatelessWidget {
-  const CompChannelCodeEmptyCard({super.key});
+class CompChannelCodeWithArrowCard extends StatelessWidget {
+  final String channelCode;
+  final String channelCodeUrl;
+
+  const CompChannelCodeWithArrowCard({
+    super.key,
+    required this.channelCode,
+    required this.channelCodeUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,39 +40,26 @@ class CompChannelCodeEmptyCard extends StatelessWidget {
                     ),
                   ),
                   width: 100.0,
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.account_balance_wallet,
-                      color: greyColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.network(
+                      channelCodeUrl, // "$domain${channelCodes[i].channelCodeImgPath}"
+                      scale: 3.0,
                     ),
                   ),
                 ),
                 const SizedBox(width: 10.0),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Bayar dengan",
-                      style: h4.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: blackFlat,
-                      ),
-                    ),
-                    Text(
-                      "Pilih pembayaran",
-                      style: footFont.copyWith(
-                        color: redColor,
-                      ),
-                    ),
-                  ],
+                Text(
+                  channelCode, // "${channelCodes[i].channelCode}"
+                  style: h4.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ],
             ),
             const Icon(
               Icons.keyboard_arrow_down,
-              color: greyDarkColor,
+              color: blackFlat,
             )
           ],
         ),

@@ -1,24 +1,38 @@
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:flutter/material.dart';
 
-class CompChannelCode extends StatelessWidget {
+class CompChannelCodeOptionCard extends StatelessWidget {
   final String channelCode;
   final String channelCodeUrl;
+  final bool isSelected;
 
-  const CompChannelCode({
+  const CompChannelCodeOptionCard({
     super.key,
     required this.channelCode,
     required this.channelCodeUrl,
+    required this.isSelected,
   });
 
   @override
   Widget build(BuildContext context) {
+    // initial
+    Color color;
+    double width;
+    if (isSelected) {
+      color = primaryColor;
+      width = 2.0;
+    } else {
+      color = greyColor;
+      width = 1.0;
+    }
+
+    //
     return Container(
       height: 90.0,
       margin: const EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
           color: whiteFlat,
-          border: Border.all(color: greyColor),
+          border: Border.all(color: color, width: width), // greyColor, 2.0
           borderRadius: const BorderRadius.all(Radius.circular(10.0))),
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -31,7 +45,8 @@ class CompChannelCode extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: greyLightColor,
-                border: Border.all(color: Colors.transparent),
+                border:
+                    Border.all(color: Colors.transparent), // Colors.transparent
                 borderRadius: const BorderRadius.all(
                   Radius.circular(10.0),
                 ),

@@ -24,8 +24,8 @@ class CompInvoiceDetailCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
           child: Text(
-            "Tagihan",
-            style: h4.copyWith(
+            "Informasi",
+            style: lableFont.copyWith(
               fontWeight: FontWeight.w600,
             ),
             textAlign: TextAlign.left,

@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'package:app_mademin/config/config.dart';
 import 'package:app_mademin/models/api_return_value.dart';
 import 'package:app_mademin/models/auth_model.dart';
-import 'package:app_mademin/models/payment_method_model.dart';
+import 'package:app_mademin/models/option_payment_method_model.dart';
 import 'package:http/http.dart' as http;
 
-class PaymentMethodServices {
-  Future<ApiReturnValue<List<PaymentMethodmo>>> optionPaymentMethod(
+class OptionPaymentMethodServices {
+  Future<ApiReturnValue<List<OptionPaymentMethodmo>>> optionPaymentMethod(
     String tenantId,
   ) async {
     var url = "$baseUrl/gen-options/option-payment-method";
@@ -32,9 +32,9 @@ class PaymentMethodServices {
 
       // Authmo model = Authmo.fromJson(data);
 
-      List<PaymentMethodmo> model = [];
+      List<OptionPaymentMethodmo> model = [];
       for (var item in data) {
-        model.add(PaymentMethodmo.fromJson(item));
+        model.add(OptionPaymentMethodmo.fromJson(item));
       }
 
       return ApiReturnValue(value: model, statusCode: "200");
@@ -45,7 +45,7 @@ class PaymentMethodServices {
     } else {
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     }
   }
 }

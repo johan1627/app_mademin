@@ -1,7 +1,7 @@
 import 'package:app_mademin/components/atoms/gen_avatar.dart';
 import 'package:app_mademin/components/atoms/gen_divider.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
-import 'package:app_mademin/components/molecules/gen_read.dart';
+import 'package:app_mademin/components/molecules/gen_read_page.dart';
 import 'package:app_mademin/config/config.dart';
 import 'package:app_mademin/screen/auth/profile/comp_listtile.dart';
 import 'package:app_mademin/components/atoms/gen_alert.dart';

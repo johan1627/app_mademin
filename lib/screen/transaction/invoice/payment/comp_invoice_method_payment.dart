@@ -1,9 +1,9 @@
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/components/molecules/gen_bottomsheet_modal.dart';
 import 'package:app_mademin/config/config.dart';
-import 'package:app_mademin/models/payment_method_model.dart';
+import 'package:app_mademin/models/option_payment_method_model.dart';
 import 'package:app_mademin/models/trinvoice_model.dart';
-import 'package:app_mademin/providers/payment_method_provider.dart';
+import 'package:app_mademin/providers/option_payment_method_provider.dart';
 import 'package:app_mademin/providers/trtransaction_provider.dart';
 import 'package:app_mademin/screen/transaction/invoice/payment/comp_channel_code_empty_card.dart';
 import 'package:app_mademin/screen/transaction/invoice/payment/comp_channel_code_option_card.dart';
@@ -27,7 +27,7 @@ class CompInvoiceMethodPayment extends StatefulWidget {
 class _CompInvoiceMethodPaymentState extends State<CompInvoiceMethodPayment> {
   // initial
   bool? selectedPaymentMethod;
-  List<PaymentMethodmo>? items;
+  List<OptionPaymentMethodmo>? items;
   List<Widget> itemsChannelCode = [];
 
   // import
@@ -37,8 +37,9 @@ class _CompInvoiceMethodPaymentState extends State<CompInvoiceMethodPayment> {
   void fetchData() async {
     var tenantId = widget.trInvoicemo.housemo!.tenantmo!.uuid!;
 
-    var res = await Provider.of<PaymentMethodProvider>(context, listen: false)
-        .optionPaymentMethod(tenantId);
+    var res =
+        await Provider.of<OptionPaymentMethodProvider>(context, listen: false)
+            .optionPaymentMethod(tenantId);
 
     if (res.statusCode == "200") {
       // paymentMethods

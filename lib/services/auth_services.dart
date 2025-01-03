@@ -46,7 +46,7 @@ class AuthServices {
     } else {
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     }
   }
 
@@ -91,11 +91,11 @@ class AuthServices {
       //
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     } else {
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     }
   }
 
@@ -132,7 +132,7 @@ class AuthServices {
     } else {
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     }
   }
 
@@ -172,7 +172,7 @@ class AuthServices {
     } else {
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     }
   }
 
@@ -214,7 +214,7 @@ class AuthServices {
     } else {
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     }
   }
 
@@ -259,7 +259,7 @@ class AuthServices {
     } else {
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     }
   }
 
@@ -294,7 +294,7 @@ class AuthServices {
     } else {
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     }
   }
 }

@@ -1,13 +1,13 @@
-class PaymentMethodmo {
+class PaymentTypemo {
   String? uuid;
   String? name;
 
-  PaymentMethodmo({
+  PaymentTypemo({
     this.uuid,
     this.name,
   });
 
-  PaymentMethodmo.fromJson(Map<String, dynamic> json) {
+  PaymentTypemo.fromJson(Map<String, dynamic> json) {
     uuid = json["uuid"];
     name = json["name"];
   }

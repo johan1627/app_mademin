@@ -1,7 +1,8 @@
 import 'package:app_mademin/providers/auth_provider.dart';
 import 'package:app_mademin/providers/house_user_provider.dart';
 import 'package:app_mademin/providers/misc_provider.dart';
-import 'package:app_mademin/providers/payment_method_provider.dart';
+import 'package:app_mademin/providers/option_payment_method_provider.dart';
+
 import 'package:app_mademin/providers/trinvoice_provider.dart';
 import 'package:app_mademin/providers/trtransaction_provider.dart';
 import 'package:app_mademin/screen/auth/sign_in/auth_root.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
           create: (context) => HouseUserProvider(),
         ),
         ChangeNotifierProvider(
-          create: (context) => PaymentMethodProvider(),
+          create: (context) => OptionPaymentMethodProvider(),
         ),
         // Transaction
         ChangeNotifierProvider(

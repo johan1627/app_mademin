@@ -1,14 +1,14 @@
-import 'package:app_mademin/models/device_mode.dart';
 import 'package:app_mademin/models/api_return_value.dart';
-import 'package:app_mademin/services/misc_services.dart';
+import 'package:app_mademin/models/option_payment_method_model.dart';
+import 'package:app_mademin/services/option_payment_method_services.dart';
 import 'package:flutter/foundation.dart';
 
 // Jangan lupa ditambahkan di main.dart
-class MiscProvider with ChangeNotifier {
-  Devicemo? _value;
-  Devicemo get value => _value!;
+class OptionPaymentMethodProvider with ChangeNotifier {
+  List<OptionPaymentMethodmo>? _value;
+  List<OptionPaymentMethodmo> get value => _value!;
 
-  set value(Devicemo value) {
+  set value(List<OptionPaymentMethodmo> value) {
     _value = value;
     notifyListeners();
   }
@@ -21,11 +21,12 @@ class MiscProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<ApiReturnValue<Devicemo>> fetch() async {
+  Future<ApiReturnValue<List<OptionPaymentMethodmo>>> optionPaymentMethod(
+    String tenantId,
+  ) async {
     try {
-      ApiReturnValue<Devicemo> value = await MiscServices().fetch();
-
-      _value = value.value;
+      ApiReturnValue<List<OptionPaymentMethodmo>> value =
+          await OptionPaymentMethodServices().optionPaymentMethod(tenantId);
 
       return ApiReturnValue(
         value: value.value,

@@ -2,15 +2,14 @@ import 'dart:convert';
 import 'package:app_mademin/config/config.dart';
 import 'package:app_mademin/models/api_return_value.dart';
 import 'package:app_mademin/models/auth_model.dart';
-import 'package:app_mademin/models/trinvoice_model.dart';
+import 'package:app_mademin/models/trtransaction_model.dart';
 import 'package:http/http.dart' as http;
 
-class TrInvoiceServices {
-  Future<ApiReturnValue<List<TrInvoicemo>>> fetchByAuth(
-    List<int> status,
-    int page,
+class TrTransactionServices {
+  Future<ApiReturnValue<TrTransactionmo>> fetchByInvoiceId(
+    String invoiceId,
   ) async {
-    var url = "$baseUrl/tr-invoices/fetch-by-auth";
+    var url = "$baseUrl/tr-transactions/fetch-by-invoice-id";
 
     Uri uri = Uri.parse(url);
     var headers = {
@@ -19,8 +18,7 @@ class TrInvoiceServices {
     };
 
     var body = jsonEncode({
-      'status': status,
-      'page': page,
+      'invoice_id': invoiceId.toString(),
     });
 
     var response = await http.post(
@@ -31,12 +29,12 @@ class TrInvoiceServices {
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
-      // Authmo model = Authmo.fromJson(data);
+      TrTransactionmo model = TrTransactionmo.fromJson(data);
 
-      List<TrInvoicemo> model = [];
-      for (var item in data) {
-        model.add(TrInvoicemo.fromJson(item));
-      }
+      // List<TrInvoicemo> model = [];
+      // for (var item in data) {
+      //   model.add(TrInvoicemo.fromJson(item));
+      // }
 
       return ApiReturnValue(value: model, statusCode: "200");
     } else if (response.statusCode == 206 || response.statusCode == 401) {

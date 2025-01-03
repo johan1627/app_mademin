@@ -2,7 +2,8 @@ import 'package:app_mademin/components/atoms/gen_button.dart';
 import 'package:app_mademin/components/atoms/gen_function.dart';
 import 'package:app_mademin/components/misc/const_styles.dart';
 import 'package:app_mademin/models/trinvoice_model.dart';
-import 'package:app_mademin/screen/transaction/invoice/payment/invoice_payment.dart';
+import 'package:app_mademin/screen/transaction/history/transaction_history_page.dart';
+import 'package:app_mademin/screen/transaction/invoice/payment/invoice_payment_page.dart';
 import 'package:flutter/material.dart';
 
 class CompInvoiceCard extends StatelessWidget {
@@ -91,13 +92,27 @@ class CompInvoiceCard extends StatelessWidget {
                 ),
                 datee,
                 ButtonText(
-                  lable: "Bayar Tagihan",
+                  lable: trInvoicemo.statusmo!.id == 0
+                      ? "Bayar Tagihan"
+                      : "Rincian Pembayaran",
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => InvoicePaymentPage(
-                        trInvoicemo: trInvoicemo,
-                      ),
-                    ));
+                    // 0 Belum bayar
+                    if (trInvoicemo.statusmo!.id == 0) {
+                      // invoice payment
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => InvoicePaymentPage(
+                          trInvoicemo: trInvoicemo,
+                        ),
+                      ));
+                    } else {
+                      // transaction history
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            TransactionHistoryPage(
+                          trInvoicemo: trInvoicemo,
+                        ),
+                      ));
+                    }
                   },
                   color: blackFlat,
                 ),

@@ -1,12 +1,12 @@
 import 'package:app_mademin/components/misc/const_styles.dart';
-import 'package:app_mademin/models/payment_method_model.dart';
+import 'package:app_mademin/models/option_payment_method_model.dart';
 import 'package:flutter/material.dart';
 
 class BottomSheetModalFunction {
   // for payment
   void showForPaymentMethod(
     BuildContext context,
-    List<PaymentMethodmo> items,
+    List<OptionPaymentMethodmo> items,
     List<Widget> channelCodeList,
   ) async {
     // Show the bottom sheet

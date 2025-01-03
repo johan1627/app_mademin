@@ -45,7 +45,7 @@ class HouseUserServices {
     } else {
       return ApiReturnValue(
           statusCode: "500",
-          message: "Aplikasi dalam pemeliharaan, coba beberapa saat lagi");
+          message: "Terdapat kesalahan, silakan hubungi kami");
     }
   }
 }

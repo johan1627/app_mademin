@@ -45,11 +45,11 @@ class ButtonWide extends StatelessWidget {
       }
     } else if (type == "danger outline") {
       if (isEnabled) {
-        colorBG = accentColor;
+        colorBG = whiteFlat;
         colorLine = redColor;
         colorText = redColor;
       } else {
-        colorBG = accentColor;
+        colorBG = whiteFlat;
         colorLine = greyColor;
         colorText = greyColor;
       }

@@ -126,17 +126,17 @@ class _SignInPageState extends State<SignInPage> {
           return function.onWillPop(context);
         },
         child: Scaffold(
-          backgroundColor: accentColor,
+          backgroundColor: whiteFlat,
           body: Stack(
             children: [
               // backgroundColor
               Container(
-                color: accentColor,
+                color: whiteFlat,
                 height: 80.0,
               ),
               SingleChildScrollView(
                 child: Container(
-                  color: accentColor,
+                  color: whiteFlat,
                   child: Column(
                     children: [
                       // start content fill
@@ -261,7 +261,7 @@ class _SignInPageState extends State<SignInPage> {
             ],
           ),
           bottomNavigationBar: Container(
-            color: accentColor,
+            color: whiteFlat,
             height: 90.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
